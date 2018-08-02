@@ -1,0 +1,72 @@
+/*
+ Static Stack
+*/
+
+#include <stdio.h>
+#define size 5               // Define size of stack, only that much elements we can store in to stack.
+
+int stack[size];            // Declare array for stack
+int top = -1;               // Initialize top to -1 by default, to indicate stack is empty
+
+void push(int value)
+{
+    if ( top == size-1)                      // If top == size-1, means stack is full
+    {
+        printf("stack is full \n");
+    }
+    else
+    {
+        // increment the top
+        top++;
+        //And store value into stack at top
+        stack[top] = value;
+    }
+} 
+
+void pop()
+{
+    // If top == -1, means stack is empty
+    if ( top == -1 )
+    {
+        printf("Stack is empty \n");
+    }
+    else
+    {
+        printf("Deleted element : %d\n", stack[top]);    //Display deleted element
+        top--;                                           // Decrement top 
+    }
+} 
+
+void displayStack()
+{
+    int i;
+    if ( top == -1 )                // If top == -1, means stack is empty
+    {
+        printf("Stack is empty");
+    }
+    else
+    {
+        printf("Stack is : \n");
+        i = top;                   // copy top into i
+        while ( i >= 0 )
+        {
+            printf(" %d \n",stack[i]);
+            i--;
+        }
+    }
+}
+
+int main()
+{
+    push(10);
+    push(20);
+    push(30);
+    displayStack();
+    pop();
+    displayStack();
+    pop();
+    pop();
+    pop();
+    displayStack();
+    return 0;
+}
